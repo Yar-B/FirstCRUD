@@ -89,7 +89,7 @@ function App() {
                 <div className={'post'}>
                     <h2>{val.nickname}</h2>
                     <h2>{val.caption}</h2>
-                        <button onClick={() => deletePost(val.id)}>delete post</button>
+                        <button onClick={() => deletePost(val.id)}>delete comment</button>
                 </div>
             )}
         )}
