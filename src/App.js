@@ -4,7 +4,7 @@ import './App.css'
 import FileUpload from "./components/FileUpload";
 
 function App() {
-    const [photo, setPhoto] = useState('')
+    const [nickName, setNickName] = useState('')
     const [caption, setCaption] = useState('')
     const [postList, setPostList] = useState([])
 
@@ -15,15 +15,15 @@ function App() {
     },[])
 
     const addPost = () => {
-       if (photo) {
+       if (nickName) {
             Axios.post("http://localhost:3001/create", {
-                photo: photo,
+                nickname: nickName,
                 caption: caption
             }).then(() => {
                 setPostList([
                     ...postList,
                     {
-                        photo: photo,
+                        nickname: nickName,
                         caption: caption
                     },
                 ]);
@@ -57,18 +57,22 @@ function App() {
 
   return (
     <div className="App">
+        <div className={'content'}>
+            <h1>Please, caption this!</h1>
+            <img style={{width: '800px'}} src={'https://media.newyorker.com/photos/61016c1c7a2a603b3075c7b8/master/pass/chayka-boredapeclub.jpg'}/>
+
+        </div>
+
         <div className = "form">
-          <label>Photo</label>
-            {/*<FileUpload/>*/}
-            {/*<input type="file" id="file-input" name="ImageStyle"/>*/}
+          <label>your nickname</label>
             <input
                 type={"text"}
-                name={"photo"}
+                name={"nickname"}
                 onChange={(e) => {
-                    setPhoto(e.target.value)
+                    setNickName(e.target.value)
                 }}
             />
-          <label>Caption</label>
+          <label>comment</label>
           <input
               type={"text"}
               name={"caption"}
@@ -78,15 +82,15 @@ function App() {
           />
             <button onClick={addPost}>post</button>
         </div>
-        <button onClick={getPosts}>Show Posts</button>
-        <button onClick={hidePosts}>Hide Posts</button>
+        <button onClick={getPosts}>Show comments</button>
+        <button onClick={hidePosts}>Hide comments</button>
         {postList.map((val, key) => {
             return (
                 <div className={'post'}>
-                <h1>{val.photo}</h1>
-                <h2>{val.caption}</h2>
-                    <button onClick={() => deletePost(val.id)}>delete post</button>
-            </div>
+                    <h2>{val.nickname}</h2>
+                    <h2>{val.caption}</h2>
+                        <button onClick={() => deletePost(val.id)}>delete post</button>
+                </div>
             )}
         )}
     </div>
