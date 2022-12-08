@@ -18,8 +18,6 @@ function App() {
 
 
 
-
-
     const addPost = () => {
        if (nickName) {
             Axios.post("http://localhost:3001/create", {
