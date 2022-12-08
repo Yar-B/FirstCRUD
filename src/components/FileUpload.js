@@ -25,6 +25,7 @@ function FileUpload() {
             console.log(ex);
         }
     };
+
         return (
             <div className="App">
                 <input type="file" onChange={saveFile} />
