@@ -11,7 +11,7 @@ function App() {
 
 
     useEffect(() =>{
-        Axios.get("http://localhost:3001/posts").then((response) => {
+        Axios.get("http://localhost:300/posts").then((response) => {
             setPostList(response.data);
         });
     },[])
