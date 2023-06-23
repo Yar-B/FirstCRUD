@@ -9,7 +9,7 @@ function App() {
     const [caption, setCaption] = useState('')
     const [postList, setPostList] = useState([])
 
-
+//deded
 
     useEffect(() =>{
         Axios.get("http://localhost:300/posts").then((response) => {
